@@ -13,6 +13,7 @@ class Song(
     val artist: String
 )
 
+// TODO: Map id to HASH
 data class SongContract(
     val name: String,
     val album: String,
@@ -21,6 +22,14 @@ data class SongContract(
 
 fun SongContract.toSong(): Song {
     return Song(
+        name = this.name,
+        album = this.album,
+        artist = this.artist
+    )
+}
+
+fun Song.toSongContract(): SongContract {
+    return SongContract(
         name = this.name,
         album = this.album,
         artist = this.artist
