@@ -1,9 +1,9 @@
-package com.guerra08.springkotlindsl.song
+package com.guerra08.springkotlindsl.song.domain
 
-import com.guerra08.springkotlindsl.song.domain.SongService
+import com.guerra08.springkotlindsl.song.Song
+import com.guerra08.springkotlindsl.song.SongContract
 import com.guerra08.springkotlindsl.song.persistence.SongRepository
 import io.mockk.every
-import io.mockk.just
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
