@@ -1,5 +1,6 @@
 package com.guerra08.springkotlindsl.song
 
+import com.guerra08.springkotlindsl.song.domain.SongService
 import org.springframework.stereotype.Component
 import org.springframework.web.servlet.function.ServerRequest
 import org.springframework.web.servlet.function.ServerResponse
@@ -22,8 +23,25 @@ class SongHandler(
 
     fun getById(req: ServerRequest): ServerResponse {
         val id = req.pathVariable("id").toLong()
-        val song: SongContract? = songService.getById(id)
+        val song = songService.getById(id)
         return song?.let {
+            ServerResponse.ok().body(it)
+        } ?: ServerResponse.notFound().build()
+    }
+
+    fun deleteById(req: ServerRequest): ServerResponse {
+        val id = req.pathVariable("id").toLong()
+        return when(songService.deleteById(id)) {
+            true -> ServerResponse.noContent().build()
+            false -> ServerResponse.notFound().build()
+        }
+    }
+
+    fun putById(req: ServerRequest): ServerResponse {
+        val id = req.pathVariable("id").toLong()
+        val newSong = req.body(SongContract::class.java)
+        val updated = songService.putById(id, newSong)
+        return updated?.let {
             ServerResponse.ok().body(it)
         } ?: ServerResponse.notFound().build()
     }

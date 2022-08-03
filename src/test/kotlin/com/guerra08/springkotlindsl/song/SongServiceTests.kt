@@ -1,7 +1,9 @@
 package com.guerra08.springkotlindsl.song
 
+import com.guerra08.springkotlindsl.song.domain.SongService
 import com.guerra08.springkotlindsl.song.persistence.SongRepository
 import io.mockk.every
+import io.mockk.just
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
@@ -82,6 +84,59 @@ class SongServiceTests {
         every { songRepository.findByIdOrNull(any()) }.returns(null)
 
         val result = sut.getById(2L)
+
+        Assertions.assertNull(result)
+
+    }
+
+    @Test
+    fun deleteById_shouldReturnTrueIfDeletesExistingSong() {
+
+        every { songRepository.existsById(any()) }.returns(true)
+        every { songRepository.deleteById(any()) }.returns(Unit)
+
+        val result = sut.deleteById(1L)
+
+        Assertions.assertTrue(result)
+
+    }
+
+    @Test
+    fun deleteById_shouldReturnFalseIfSongDoesNotExist() {
+
+        every { songRepository.existsById(any()) }.returns(false)
+
+        val result = sut.deleteById(1L)
+
+        Assertions.assertFalse(result)
+
+    }
+
+    @Test
+    fun putById_shouldReturnNewlyPutSongAsContract() {
+
+        val toPut = SongContract("Un-reborn Again", "Villains", "QOTSA")
+        val songInDb = Song(1L, "Un-reborn Again", "Villains", "QOTSA")
+
+        every { songRepository.existsById(any()) }.returns(true)
+        every { songRepository.save(any()) }.returns(songInDb)
+
+        val result = sut.putById(1L, toPut)
+
+        Assertions.assertNotNull(result)
+        Assertions.assertEquals(songInDb.name, result?.name)
+        Assertions.assertEquals(toPut.name, result?.name)
+
+    }
+
+    @Test
+    fun putById_shouldReturnNullIfSongDoesNotExist() {
+
+        val toPut = SongContract("Un-reborn Again", "Villains", "QOTSA")
+
+        every { songRepository.existsById(any()) }.returns(false)
+
+        val result = sut.putById(1L, toPut)
 
         Assertions.assertNull(result)
 

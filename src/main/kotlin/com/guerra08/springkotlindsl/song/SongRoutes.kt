@@ -16,6 +16,8 @@ class SongRoutes(
             GET("", songHandler::index)
             GET("/{id}", songHandler::getById)
             POST("", songHandler::create)
+            PUT("/{id}", songHandler::putById)
+            DELETE("/{id}", songHandler::deleteById)
         }
     }
 

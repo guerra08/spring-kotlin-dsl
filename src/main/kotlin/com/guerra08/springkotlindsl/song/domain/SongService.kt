@@ -1,5 +1,6 @@
-package com.guerra08.springkotlindsl.song
+package com.guerra08.springkotlindsl.song.domain
 
+import com.guerra08.springkotlindsl.song.*
 import com.guerra08.springkotlindsl.song.persistence.SongRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
@@ -19,6 +20,22 @@ class SongService(
 
     fun getById(id: Long): SongContract? {
         return songRepository.findByIdOrNull(id)?.toSongContract()
+    }
+
+    fun deleteById(id: Long) = when (songRepository.existsById(id)) {
+        true -> {
+            songRepository.deleteById(id)
+            true
+        }
+        false -> false
+    }
+
+    fun putById(id: Long, newSong: SongContract): SongContract? {
+        if(songRepository.existsById(id)){
+            val songToPut = newSong.toSongWithId(id)
+            return songRepository.save(songToPut).toSongContract()
+        }
+        return null
     }
 
 }
