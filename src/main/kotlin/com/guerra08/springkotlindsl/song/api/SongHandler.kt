@@ -1,5 +1,6 @@
-package com.guerra08.springkotlindsl.song
+package com.guerra08.springkotlindsl.song.api
 
+import com.guerra08.springkotlindsl.song.SongContract
 import com.guerra08.springkotlindsl.song.domain.SongService
 import org.springframework.stereotype.Component
 import org.springframework.web.servlet.function.ServerRequest

@@ -1,4 +1,4 @@
-package com.guerra08.springkotlindsl.song
+package com.guerra08.springkotlindsl.song.api
 
 import org.springframework.context.annotation.Bean
 import org.springframework.http.MediaType
