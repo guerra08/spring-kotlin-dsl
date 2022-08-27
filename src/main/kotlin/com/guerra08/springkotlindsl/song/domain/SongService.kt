@@ -20,16 +20,16 @@ class SongService(
         return songRepository.findByIdOrNull(id)?.toSongContract()
     }
 
-    fun deleteById(id: Long) = when (songRepository.existsById(id)) {
-        true -> {
+    fun deleteById(id: Long): Boolean {
+        if (songRepository.existsById(id)) {
             songRepository.deleteById(id)
-            true
+            return true
         }
-        false -> false
+        return false
     }
 
     fun putById(id: Long, newSong: SongContract): SongContract? {
-        if(songRepository.existsById(id)){
+        if (songRepository.existsById(id)) {
             val songToPut = newSong.toSongWithId(id)
             return songRepository.save(songToPut).toSongContract()
         }
