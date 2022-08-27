@@ -3,9 +3,7 @@ package com.guerra08.springkotlindsl.song.domain
 import com.guerra08.springkotlindsl.song.*
 import com.guerra08.springkotlindsl.song.persistence.SongRepository
 import org.springframework.data.repository.findByIdOrNull
-import org.springframework.stereotype.Component
 
-@Component
 class SongService(
     private val songRepository: SongRepository
 ) {

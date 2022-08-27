@@ -2,11 +2,9 @@ package com.guerra08.springkotlindsl.song.api
 
 import com.guerra08.springkotlindsl.song.SongContract
 import com.guerra08.springkotlindsl.song.domain.SongService
-import org.springframework.stereotype.Component
 import org.springframework.web.servlet.function.ServerRequest
 import org.springframework.web.servlet.function.ServerResponse
 
-@Component
 class SongHandler(
     private val songService: SongService
 ) {

@@ -7,5 +7,9 @@ import org.springframework.boot.runApplication
 class SpringKotlinDslApplication
 
 fun main(args: Array<String>) {
-    runApplication<SpringKotlinDslApplication>(*args)
+    runApplication<SpringKotlinDslApplication>(*args) {
+        addInitializers(
+            beans
+        )
+    }
 }
