@@ -5,7 +5,7 @@ import com.guerra08.springkotlindsl.song.api.SongRoutes
 import com.guerra08.springkotlindsl.song.domain.SongService
 import org.springframework.context.support.beans
 
-val beans = beans {
+fun beans() = beans {
 
     //Services
     bean {

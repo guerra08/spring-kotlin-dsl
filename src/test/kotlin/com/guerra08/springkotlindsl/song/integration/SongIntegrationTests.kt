@@ -13,6 +13,7 @@ import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.post
+import org.springframework.test.web.servlet.put
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -81,6 +82,22 @@ class SongIntegrationTests(
 
     }
 
-    //TODO: Add missing tests
+    @Test
+    fun putById_shouldReturnOkWhenPutIsSuccessful() {
+
+        val song = SongContract(name = "Hurt", album = "Downward Spiral", artist = "NIN")
+
+        every { songService.putById(any(), any()) } returns song
+
+        val payload = Gson().toJson(song)
+
+        client.put("/song/1") {
+            content = payload
+            contentType = MediaType.APPLICATION_JSON
+        }.andExpect {
+            status { isOk() }
+        }
+
+    }
 
 }

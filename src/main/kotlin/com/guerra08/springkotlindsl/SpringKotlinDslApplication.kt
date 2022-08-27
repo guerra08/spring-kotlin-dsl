@@ -8,8 +8,6 @@ class SpringKotlinDslApplication
 
 fun main(args: Array<String>) {
     runApplication<SpringKotlinDslApplication>(*args) {
-        addInitializers(
-            beans
-        )
+        addInitializers(BeansInitializer())
     }
 }
