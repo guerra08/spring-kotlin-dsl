@@ -3,9 +3,10 @@ package com.guerra08.springkotlindsl.song.domain
 import com.guerra08.springkotlindsl.song.Song
 import com.guerra08.springkotlindsl.song.SongContract
 import com.guerra08.springkotlindsl.song.persistence.SongRepository
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
 import io.mockk.every
 import io.mockk.mockk
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.data.repository.findByIdOrNull
 
@@ -31,9 +32,9 @@ class SongServiceTests {
 
         val result = sut.create(songContract)
 
-        Assertions.assertEquals(songContract.name, result.name)
-        Assertions.assertEquals(songContract.album, result.album)
-        Assertions.assertEquals(songContract.artist, result.artist)
+        result.name shouldBe songContract.name
+        result.album shouldBe songContract.album
+        result.artist shouldBe songContract.artist
     }
 
     @Test
@@ -57,7 +58,7 @@ class SongServiceTests {
 
         val result = sut.getAll()
 
-        Assertions.assertEquals(2, result.size)
+        result.size shouldBe 2
     }
 
     @Test
@@ -73,9 +74,8 @@ class SongServiceTests {
 
         val result = sut.getById(2L)
 
-        Assertions.assertNotNull(result)
-        Assertions.assertEquals("Smooth Sailing", result?.name)
-
+        result shouldNotBe null
+        result?.name shouldBe "Smooth Sailing"
     }
 
     @Test
@@ -85,8 +85,7 @@ class SongServiceTests {
 
         val result = sut.getById(2L)
 
-        Assertions.assertNull(result)
-
+        result shouldBe null
     }
 
     @Test
@@ -97,8 +96,7 @@ class SongServiceTests {
 
         val result = sut.deleteById(1L)
 
-        Assertions.assertTrue(result)
-
+        result shouldBe true
     }
 
     @Test
@@ -108,7 +106,7 @@ class SongServiceTests {
 
         val result = sut.deleteById(1L)
 
-        Assertions.assertFalse(result)
+        result shouldBe false
 
     }
 
@@ -123,9 +121,8 @@ class SongServiceTests {
 
         val result = sut.putById(1L, toPut)
 
-        Assertions.assertNotNull(result)
-        Assertions.assertEquals(songInDb.name, result?.name)
-        Assertions.assertEquals(toPut.name, result?.name)
+        result shouldNotBe null
+        result?.name shouldBe songInDb.name
 
     }
 
@@ -138,7 +135,7 @@ class SongServiceTests {
 
         val result = sut.putById(1L, toPut)
 
-        Assertions.assertNull(result)
+        result shouldBe null
 
     }
 
