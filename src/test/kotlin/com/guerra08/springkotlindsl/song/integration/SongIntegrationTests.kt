@@ -1,7 +1,7 @@
 package com.guerra08.springkotlindsl.song.integration
 
 import com.google.gson.Gson
-import com.guerra08.springkotlindsl.song.SongContract
+import com.guerra08.springkotlindsl.song.Helpers.generateFakeSongContract
 import com.guerra08.springkotlindsl.song.domain.SongService
 import com.ninjasquad.springmockk.MockkBean
 import io.mockk.every
@@ -25,7 +25,7 @@ class SongIntegrationTests(
     fun getIndex_shouldReturnOkResponseWithSongs() {
 
         every { songService.getAll() } returns listOf(
-            SongContract(name = "Hurt", album = "Downward Spiral", artist = "NIN")
+            generateFakeSongContract()
         )
 
         client.get("/song")
@@ -38,12 +38,7 @@ class SongIntegrationTests(
     @Test
     fun getById_shouldReturnOkResponseIfSongExists() {
 
-        every { songService.getById(any()) } returns SongContract(
-            name = "Hurt",
-            album = "Downward Spiral",
-            artist = "NIN"
-        )
-
+        every { songService.getById(any()) } returns generateFakeSongContract()
 
         client.get("/song/{id}", 1L)
             .andExpect {
@@ -68,11 +63,11 @@ class SongIntegrationTests(
     @Test
     fun post_shouldReturnOkAfterCreatingSong() {
 
-        val song = SongContract(name = "Hurt", album = "Downward Spiral", artist = "NIN")
+        val songContract = generateFakeSongContract()
 
-        every { songService.create(any()) } returns song
+        every { songService.create(any()) } returns songContract
 
-        val payload = Gson().toJson(song)
+        val payload = Gson().toJson(songContract)
 
         client.post("/song") {
             content = payload
@@ -86,11 +81,11 @@ class SongIntegrationTests(
     @Test
     fun putById_shouldReturnOkWhenPutIsSuccessful() {
 
-        val song = SongContract(name = "Hurt", album = "Downward Spiral", artist = "NIN")
+        val songContract = generateFakeSongContract()
 
-        every { songService.putById(any(), any()) } returns song
+        every { songService.putById(any(), any()) } returns songContract
 
-        val payload = Gson().toJson(song)
+        val payload = Gson().toJson(songContract)
 
         client.put("/song/1") {
             content = payload
@@ -104,11 +99,11 @@ class SongIntegrationTests(
     @Test
     fun putById_shouldReturnNotFoundIfSongDoesNotExists() {
 
-        val song = SongContract(name = "Hurt", album = "Downward Spiral", artist = "NIN")
+        val songContract = generateFakeSongContract()
 
         every { songService.putById(any(), any()) } returns null
 
-        val payload = Gson().toJson(song)
+        val payload = Gson().toJson(songContract)
 
         client.put("/song/1") {
             content = payload

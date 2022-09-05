@@ -1,6 +1,9 @@
 package com.guerra08.springkotlindsl.song.domain
 
 import com.guerra08.springkotlindsl.song.*
+import com.guerra08.springkotlindsl.song.contract.SongContract
+import com.guerra08.springkotlindsl.song.contract.toSong
+import com.guerra08.springkotlindsl.song.contract.toSongWithId
 import com.guerra08.springkotlindsl.song.persistence.SongRepository
 import org.springframework.data.repository.findByIdOrNull
 

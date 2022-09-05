@@ -1,8 +1,10 @@
 package com.guerra08.springkotlindsl.song.domain
 
+import com.guerra08.springkotlindsl.song.Helpers.generateFakeSong
+import com.guerra08.springkotlindsl.song.Helpers.generateFakeSongContract
 import com.guerra08.springkotlindsl.song.Song
-import com.guerra08.springkotlindsl.song.SongContract
 import com.guerra08.springkotlindsl.song.persistence.SongRepository
+import io.github.serpro69.kfaker.Faker
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.mockk.every
@@ -13,15 +15,12 @@ import org.springframework.data.repository.findByIdOrNull
 class SongServiceTests {
 
     private val songRepository: SongRepository = mockk()
+    private val faker = Faker()
     private val sut: SongService = SongService(songRepository)
 
     @Test
     fun create_shouldReturnCreatedSongContract(){
-        val songContract = SongContract(
-            name = "Aerials",
-            album = "Toxicity",
-            artist = "SOAD"
-        )
+        val songContract = generateFakeSongContract();
         val createdSong = Song(
             id = 1L,
             name = songContract.name,
@@ -41,18 +40,8 @@ class SongServiceTests {
     fun getAll_shouldReturnListOfMappedSongsToSongContract(){
 
         val songs = listOf(
-            Song(
-                id = 1L,
-                name = "Du Hast",
-                album = "Sehnsucht",
-                artist = "Rammstein"
-            ),
-            Song(
-                id = 2L,
-                name = "Smooth Sailing",
-                album = "Like Clockwork...",
-                artist = "QOTSA"
-            )
+            generateFakeSong(),
+            generateFakeSong()
         )
         every { songRepository.findAll() }.returns(songs)
 
@@ -64,18 +53,13 @@ class SongServiceTests {
     @Test
     fun getById_shouldReturnSongContractIfSongExists(){
 
-        val song = Song(
-            id = 2L,
-            name = "Smooth Sailing",
-            album = "Like Clockwork...",
-            artist = "QOTSA"
-        )
+        val song = generateFakeSong()
         every { songRepository.findByIdOrNull(any()) }.returns(song)
 
         val result = sut.getById(2L)
 
         result shouldNotBe null
-        result?.name shouldBe "Smooth Sailing"
+        result?.name shouldBe song.name
     }
 
     @Test
@@ -113,8 +97,8 @@ class SongServiceTests {
     @Test
     fun putById_shouldReturnNewlyPutSongAsContract() {
 
-        val toPut = SongContract("Un-reborn Again", "Villains", "QOTSA")
-        val songInDb = Song(1L, "Un-reborn Again", "Villains", "QOTSA")
+        val toPut = generateFakeSongContract()
+        val songInDb = generateFakeSong()
 
         every { songRepository.existsById(any()) }.returns(true)
         every { songRepository.save(any()) }.returns(songInDb)
@@ -129,7 +113,7 @@ class SongServiceTests {
     @Test
     fun putById_shouldReturnNullIfSongDoesNotExist() {
 
-        val toPut = SongContract("Un-reborn Again", "Villains", "QOTSA")
+        val toPut = generateFakeSongContract()
 
         every { songRepository.existsById(any()) }.returns(false)
 
