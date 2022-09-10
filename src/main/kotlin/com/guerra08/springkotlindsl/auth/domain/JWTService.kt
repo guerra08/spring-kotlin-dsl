@@ -1,4 +1,4 @@
-package com.guerra08.springkotlindsl.auth.service
+package com.guerra08.springkotlindsl.auth.domain
 
 import com.guerra08.springkotlindsl.auth.User
 import io.jsonwebtoken.Jwts

@@ -1,4 +1,4 @@
-package com.guerra08.springkotlindsl.auth.service
+package com.guerra08.springkotlindsl.auth.domain
 
 import com.guerra08.springkotlindsl.auth.User
 import com.guerra08.springkotlindsl.auth.contract.UserContract
@@ -21,7 +21,7 @@ class UserService(
 
     override fun loadUserByUsername(username: String): UserDetails {
         return userRepository.findByEmail(username)
-            ?: throw UsernameNotFoundException("User with given email not found.");
+            ?: throw UsernameNotFoundException("User with given email not found.")
     }
 
 }

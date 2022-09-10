@@ -2,7 +2,7 @@ package com.guerra08.springkotlindsl.auth.config
 
 import com.guerra08.springkotlindsl.auth.filter.JWTFilter
 import com.guerra08.springkotlindsl.auth.persistence.UserRepository
-import com.guerra08.springkotlindsl.auth.service.JWTService
+import com.guerra08.springkotlindsl.auth.domain.JWTService
 import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.http.SessionCreationPolicy

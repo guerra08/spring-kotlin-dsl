@@ -1,7 +1,7 @@
 package com.guerra08.springkotlindsl.auth.filter
 
 import com.guerra08.springkotlindsl.auth.persistence.UserRepository
-import com.guerra08.springkotlindsl.auth.service.JWTService
+import com.guerra08.springkotlindsl.auth.domain.JWTService
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder
@@ -22,7 +22,9 @@ class JWTFilter(
     ) {
         val token = getTokenFromHeader(request)
         token?.let {
-            authenticate(it)
+            if(jwtService.isTokenValid(it)) {
+                authenticate(it)
+            }
         }
         filterChain.doFilter(request, response)
     }

@@ -3,9 +3,9 @@ package com.guerra08.springkotlindsl
 import com.guerra08.springkotlindsl.auth.api.AuthHandler
 import com.guerra08.springkotlindsl.auth.api.AuthRoutes
 import com.guerra08.springkotlindsl.auth.config.securityFilterChain
-import com.guerra08.springkotlindsl.auth.service.AuthService
-import com.guerra08.springkotlindsl.auth.service.JWTService
-import com.guerra08.springkotlindsl.auth.service.UserService
+import com.guerra08.springkotlindsl.auth.domain.AuthService
+import com.guerra08.springkotlindsl.auth.domain.JWTService
+import com.guerra08.springkotlindsl.auth.domain.UserService
 import com.guerra08.springkotlindsl.song.api.SongHandler
 import com.guerra08.springkotlindsl.song.api.SongRoutes
 import com.guerra08.springkotlindsl.song.domain.SongService

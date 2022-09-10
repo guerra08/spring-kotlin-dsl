@@ -1,4 +1,4 @@
-package com.guerra08.springkotlindsl.auth.service
+package com.guerra08.springkotlindsl.auth.domain
 
 import com.guerra08.springkotlindsl.auth.contract.UserContract
 import org.springframework.security.authentication.AuthenticationManager
@@ -12,7 +12,7 @@ class AuthService(
 
     fun signUp(userContract: UserContract): String {
         val user = userService.create(userContract)
-        return jwtService.generateToken(user);
+        return jwtService.generateToken(user)
     }
 
     fun signIn(userContract: UserContract): String {

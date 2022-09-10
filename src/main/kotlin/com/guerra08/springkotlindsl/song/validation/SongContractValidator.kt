@@ -4,7 +4,7 @@ import com.guerra08.springkotlindsl.song.contract.SongContract
 import io.konform.validation.jsonschema.maxLength
 import io.konform.validation.Validation
 
-val validateSongContract = Validation<SongContract> {
+val validateSongContract = Validation {
     SongContract::name required {
         maxLength(100)
     }

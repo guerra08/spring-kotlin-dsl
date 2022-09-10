@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.Table
+import javax.validation.constraints.Email
 
 @Entity
 @Table(name = "USERS")
@@ -14,6 +15,7 @@ class User(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long? = null,
+    @field:Email
     val email: String,
     private val password: String
 
