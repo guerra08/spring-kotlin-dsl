@@ -25,7 +25,7 @@ fun securityFilterChain(
         }
         authorizeRequests {
             authorize("/auth/**", permitAll)
-            authorize(HttpMethod.GET, "/song", permitAll)
+            authorize(HttpMethod.GET, "/song/**", permitAll)
             authorize(anyRequest, authenticated)
         }
         addFilterBefore<UsernamePasswordAuthenticationFilter>(JWTFilter(jwtService, userRepository))

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
+import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.web.servlet.*
 
 @SpringBootTest
@@ -61,6 +62,7 @@ class SongIntegrationTests(
     }
 
     @Test
+    @WithMockUser
     fun post_shouldReturnOkAfterCreatingSong() {
 
         val songContract = generateFakeSongContract()
@@ -79,6 +81,7 @@ class SongIntegrationTests(
     }
 
     @Test
+    @WithMockUser
     fun putById_shouldReturnOkWhenPutIsSuccessful() {
 
         val songContract = generateFakeSongContract()
@@ -97,6 +100,7 @@ class SongIntegrationTests(
     }
 
     @Test
+    @WithMockUser
     fun putById_shouldReturnNotFoundIfSongDoesNotExists() {
 
         val songContract = generateFakeSongContract()
@@ -115,6 +119,7 @@ class SongIntegrationTests(
     }
 
     @Test
+    @WithMockUser
     fun deleteById_shouldReturnNoContentIfDeleteIsSuccessful() {
 
         every { songService.deleteById(any()) } returns true
@@ -127,6 +132,7 @@ class SongIntegrationTests(
     }
 
     @Test
+    @WithMockUser
     fun deleteById_shouldReturnNotFound() {
 
         every { songService.deleteById(any()) } returns false
