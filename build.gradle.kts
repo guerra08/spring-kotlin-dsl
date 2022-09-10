@@ -22,7 +22,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("com.google.code.gson:gson:2.9.1")
+    implementation("com.squareup.moshi:moshi-kotlin:1.13.0")
     implementation("io.konform:konform-jvm:0.4.0")
     implementation("io.github.serpro69:kotlin-faker:1.11.0")
     implementation("org.springframework.boot:spring-boot-starter-security")

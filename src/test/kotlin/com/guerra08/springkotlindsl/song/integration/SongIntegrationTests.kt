@@ -1,9 +1,11 @@
 package com.guerra08.springkotlindsl.song.integration
 
-import com.google.gson.Gson
 import com.guerra08.springkotlindsl.song.Helpers.generateFakeSongContract
+import com.guerra08.springkotlindsl.song.contract.SongContract
 import com.guerra08.springkotlindsl.song.domain.SongService
 import com.ninjasquad.springmockk.MockkBean
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import io.mockk.every
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -21,6 +23,10 @@ class SongIntegrationTests(
 
     @MockkBean
     private lateinit var songService: SongService
+
+    private val moshi: Moshi = Moshi.Builder()
+        .addLast(KotlinJsonAdapterFactory())
+        .build()
 
     @Test
     fun getIndex_shouldReturnOkResponseWithSongs() {
@@ -69,7 +75,7 @@ class SongIntegrationTests(
 
         every { songService.create(any()) } returns songContract
 
-        val payload = Gson().toJson(songContract)
+        val payload = moshi.adapter(SongContract::class.java).toJson(songContract)
 
         client.post("/song") {
             content = payload
@@ -88,7 +94,7 @@ class SongIntegrationTests(
 
         every { songService.putById(any(), any()) } returns songContract
 
-        val payload = Gson().toJson(songContract)
+        val payload = moshi.adapter(SongContract::class.java).toJson(songContract)
 
         client.put("/song/1") {
             content = payload
@@ -107,7 +113,7 @@ class SongIntegrationTests(
 
         every { songService.putById(any(), any()) } returns null
 
-        val payload = Gson().toJson(songContract)
+        val payload = moshi.adapter(SongContract::class.java).toJson(songContract)
 
         client.put("/song/1") {
             content = payload
