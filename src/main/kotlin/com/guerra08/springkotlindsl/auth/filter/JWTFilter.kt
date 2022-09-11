@@ -32,7 +32,7 @@ class JWTFilter(
     private fun authenticate(token: String) {
         val id = jwtService.getTokenId(token)
         userRepository.findByIdOrNull(id)?.let {
-            val upt = UsernamePasswordAuthenticationToken(it, null, null)
+            val upt = UsernamePasswordAuthenticationToken(it, null, it.authorities)
             SecurityContextHolder.getContext().authentication = upt
         }
     }

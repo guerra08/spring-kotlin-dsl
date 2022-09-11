@@ -1,12 +1,9 @@
 package com.guerra08.springkotlindsl.auth
 
 import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 import javax.validation.constraints.Email
 
 @Entity
@@ -17,12 +14,15 @@ class User(
     val id: Long? = null,
     @field:Email
     val email: String,
-    private val password: String
+    private val password: String,
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "role_id", nullable = false)
+    var role: Role? = null
 
 ) : UserDetails{
 
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> =
-        mutableListOf()
+        mutableListOf(SimpleGrantedAuthority(role?.name))
 
     override fun getPassword() = password
 

@@ -1,5 +1,6 @@
 package com.guerra08.springkotlindsl.auth.config
 
+import com.guerra08.springkotlindsl.auth.Roles
 import com.guerra08.springkotlindsl.auth.filter.JWTFilter
 import com.guerra08.springkotlindsl.auth.persistence.UserRepository
 import com.guerra08.springkotlindsl.auth.domain.JWTService
@@ -26,6 +27,7 @@ fun securityFilterChain(
         authorizeRequests {
             authorize("/auth/**", permitAll)
             authorize(HttpMethod.GET, "/song/**", permitAll)
+            authorize(HttpMethod.POST, "/song", hasRole(Roles.ROLE_ADMIN.name))
             authorize(anyRequest, authenticated)
         }
         addFilterBefore<UsernamePasswordAuthenticationFilter>(JWTFilter(jwtService, userRepository))
