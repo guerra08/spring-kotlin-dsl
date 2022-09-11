@@ -4,7 +4,6 @@ import com.guerra08.springkotlindsl.song.Helpers.generateFakeSong
 import com.guerra08.springkotlindsl.song.Helpers.generateFakeSongContract
 import com.guerra08.springkotlindsl.song.Song
 import com.guerra08.springkotlindsl.song.persistence.SongRepository
-import io.github.serpro69.kfaker.Faker
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.mockk.every
@@ -15,12 +14,11 @@ import org.springframework.data.repository.findByIdOrNull
 class SongServiceTests {
 
     private val songRepository: SongRepository = mockk()
-    private val faker = Faker()
     private val sut: SongService = SongService(songRepository)
 
     @Test
     fun create_shouldReturnCreatedSongContract(){
-        val songContract = generateFakeSongContract();
+        val songContract = generateFakeSongContract()
         val createdSong = Song(
             id = 1L,
             name = songContract.name,

@@ -12,13 +12,13 @@ class AuthService(
 
     fun signUp(userContract: UserContract): String {
         val user = userService.create(userContract)
-        return jwtService.generateToken(user)
+        return jwtService.generateTokenForUser(user)
     }
 
     fun signIn(userContract: UserContract): String {
         val upt = UsernamePasswordAuthenticationToken(userContract.email, userContract.password)
         val auth = authenticationManager.authenticate(upt)
-        return jwtService.generateToken(auth)
+        return jwtService.generateTokenForAuth(auth)
     }
 
 }

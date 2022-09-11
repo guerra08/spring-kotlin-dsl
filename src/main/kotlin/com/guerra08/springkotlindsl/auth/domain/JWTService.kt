@@ -13,12 +13,12 @@ class JWTService {
     @Value("\${app.token.secret}") private lateinit var tokenSecret: String
     @Value("\${app.token.expires_ms}") private lateinit var expiresMs: String
 
-    fun generateToken(auth: Authentication): String {
+    fun generateTokenForAuth(auth: Authentication): String {
         val user = auth.principal as User
-        return generateToken(user)
+        return generateTokenForUser(user)
     }
 
-    fun generateToken(user: User): String {
+    fun generateTokenForUser(user: User): String {
         return Jwts.builder()
             .setIssuer("IRS")
             .setSubject(user.id.toString())
