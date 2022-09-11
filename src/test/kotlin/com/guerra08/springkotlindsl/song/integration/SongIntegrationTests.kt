@@ -68,7 +68,7 @@ class SongIntegrationTests(
     }
 
     @Test
-    @WithMockUser
+    @WithMockUser(roles = ["ADMIN"])
     fun post_shouldReturnOkAfterCreatingSong() {
 
         val songContract = generateFakeSongContract()
