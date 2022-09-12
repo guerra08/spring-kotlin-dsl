@@ -6,6 +6,7 @@ plugins {
     kotlin("jvm") version "1.7.10"
     kotlin("plugin.spring") version "1.7.10"
     kotlin("plugin.jpa") version "1.7.10"
+    kotlin("plugin.serialization") version "1.7.10"
 }
 
 group = "com.guerra08"
@@ -24,10 +25,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("com.squareup.moshi:moshi-kotlin:1.13.0")
     implementation("io.konform:konform-jvm:0.4.0")
     implementation("io.github.serpro69:kotlin-faker:1.11.0")
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.h2database:h2")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")

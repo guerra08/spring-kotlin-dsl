@@ -1,7 +1,9 @@
 package com.guerra08.springkotlindsl.song.contract
 
 import com.guerra08.springkotlindsl.song.Song
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class SongContract(
     val name: String,
     val album: String,
