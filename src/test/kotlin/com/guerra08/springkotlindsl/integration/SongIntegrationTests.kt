@@ -24,7 +24,7 @@ class SongIntegrationTests(
     private lateinit var songService: SongService
 
     @Test
-    fun getIndex_shouldReturnOkResponseWithSongs() {
+    fun `get all songs should return a list of all songs, without requiring authentication`() {
 
         every { songService.getAll() } returns listOf(
             generateFakeSongContract()
@@ -38,7 +38,7 @@ class SongIntegrationTests(
     }
 
     @Test
-    fun getById_shouldReturnOkResponseIfSongExists() {
+    fun `get a song by id should return the song, without requiring authentication`() {
 
         every { songService.getById(any()) } returns generateFakeSongContract()
 
@@ -50,7 +50,7 @@ class SongIntegrationTests(
     }
 
     @Test
-    fun getById_shouldReturnNotFoundResponseIfSongDoesNotExist() {
+    fun `get by id should return not found if song does not exist, without requiring authentication`() {
 
         every { songService.getById(any()) } returns null
 
@@ -64,7 +64,7 @@ class SongIntegrationTests(
 
     @Test
     @WithMockUser(roles = ["ADMIN"])
-    fun post_shouldReturnOkAfterCreatingSong() {
+    fun `post new song should return the created song, requiring authentication`() {
 
         val songContract = generateFakeSongContract()
 
@@ -83,7 +83,7 @@ class SongIntegrationTests(
 
     @Test
     @WithMockUser
-    fun putById_shouldReturnOkWhenPutIsSuccessful() {
+    fun `put song by id should return the new song, requiring authentication`() {
 
         val songContract = generateFakeSongContract()
 
@@ -102,7 +102,7 @@ class SongIntegrationTests(
 
     @Test
     @WithMockUser
-    fun putById_shouldReturnNotFoundIfSongDoesNotExists() {
+    fun `put song by id should return not found if song does not exist, requiring authentication`() {
 
         val songContract = generateFakeSongContract()
 
@@ -121,7 +121,7 @@ class SongIntegrationTests(
 
     @Test
     @WithMockUser
-    fun deleteById_shouldReturnNoContentIfDeleteIsSuccessful() {
+    fun `delete song by id should return no content if song is deleted, requiring authentication`() {
 
         every { songService.deleteById(any()) } returns true
 
@@ -134,7 +134,7 @@ class SongIntegrationTests(
 
     @Test
     @WithMockUser
-    fun deleteById_shouldReturnNotFound() {
+    fun `delete by id should return not found if song does not exist, requiring authentication`() {
 
         every { songService.deleteById(any()) } returns false
 

@@ -18,7 +18,7 @@ class SongServiceTests {
     private val sut: SongService = SongService(songRepository)
 
     @Test
-    fun create_shouldReturnCreatedSongContract(){
+    fun `given a song contract, create should return the newly created song as song contract`(){
         val songContract = generateFakeSongContract()
         val createdSong = Song(
             id = 1L,
@@ -36,7 +36,7 @@ class SongServiceTests {
     }
 
     @Test
-    fun getAll_shouldReturnListOfMappedSongsToSongContract(){
+    fun `get all should return a list of all saved songs, as song contracts`(){
 
         val songs = listOf(
             generateFakeSong(),
@@ -50,7 +50,7 @@ class SongServiceTests {
     }
 
     @Test
-    fun getById_shouldReturnSongContractIfSongExists(){
+    fun `get by id should return the song contract of the existing song`(){
 
         val song = generateFakeSong()
         every { songRepository.findByIdOrNull(any()) }.returns(song)
@@ -62,7 +62,7 @@ class SongServiceTests {
     }
 
     @Test
-    fun getById_shouldReturnNullIfSongDoesNotExist(){
+    fun `get by id should return null if the song does not exist`(){
 
         every { songRepository.findByIdOrNull(any()) }.returns(null)
 
@@ -72,7 +72,7 @@ class SongServiceTests {
     }
 
     @Test
-    fun deleteById_shouldReturnTrueIfDeletesExistingSong() {
+    fun `delete by id should return true if the song has been deleted`() {
 
         every { songRepository.existsById(any()) }.returns(true)
         every { songRepository.deleteById(any()) }.returns(Unit)
@@ -83,7 +83,7 @@ class SongServiceTests {
     }
 
     @Test
-    fun deleteById_shouldReturnFalseIfSongDoesNotExist() {
+    fun `delete by id should return false if the song has not been deleted`() {
 
         every { songRepository.existsById(any()) }.returns(false)
 
@@ -94,7 +94,7 @@ class SongServiceTests {
     }
 
     @Test
-    fun putById_shouldReturnNewlyPutSongAsContract() {
+    fun `put by id should return the newly put song, as a song contract`() {
 
         val toPut = generateFakeSongContract()
         val songInDb = generateFakeSong()
@@ -110,7 +110,7 @@ class SongServiceTests {
     }
 
     @Test
-    fun putById_shouldReturnNullIfSongDoesNotExist() {
+    fun `put by id should return null when trying to put a song that does not exist`() {
 
         val toPut = generateFakeSongContract()
 

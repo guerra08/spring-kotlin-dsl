@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 class SongContractValidationTests {
 
     @Test
-    fun validateSongContract_shouldNotReturnsErrorsForValidContract() {
+    fun `given a valid song contract, validateSongContract should not return errors`() {
 
         val contract = SongContract(name = "Song", album = "Album", artist = "Artist")
 
@@ -19,7 +19,7 @@ class SongContractValidationTests {
     }
 
     @Test
-    fun validateSongContract_shouldReturnsErrorsForInvalidContract() {
+    fun `given invalid song contract, validateSongContract should return errors`() {
 
         val contract = SongContract(name = "m9RQLF8TETe7WRZe7sNoY8Z9UuOcPycHTPlbioIJwV8nk9DCkEWzt4bgVUcoQ3kA55tWqDOvkHrwNDCuZZqExoewPBhW4oL5helSs", album = "Album", artist = "Artist")
 
