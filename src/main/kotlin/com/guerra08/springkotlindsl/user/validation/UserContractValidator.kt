@@ -1,6 +1,6 @@
-package com.guerra08.springkotlindsl.auth.validation
+package com.guerra08.springkotlindsl.user.validation
 
-import com.guerra08.springkotlindsl.auth.contract.UserContract
+import com.guerra08.springkotlindsl.user.contract.UserContract
 import io.konform.validation.Validation
 import io.konform.validation.jsonschema.maxLength
 import io.konform.validation.jsonschema.minLength

@@ -1,6 +1,6 @@
 package com.guerra08.springkotlindsl.auth.domain
 
-import com.guerra08.springkotlindsl.auth.User
+import com.guerra08.springkotlindsl.user.User
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys
 import org.springframework.beans.factory.annotation.Value

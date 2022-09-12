@@ -1,8 +1,8 @@
-package com.guerra08.springkotlindsl.song.validation
+package com.guerra08.springkotlindsl.unit.validation
 
-import com.guerra08.springkotlindsl.auth.contract.UserContract
-import com.guerra08.springkotlindsl.auth.validation.validateUserContract
-import com.guerra08.springkotlindsl.song.Helpers.generateFakeUserContract
+import com.guerra08.springkotlindsl.user.contract.UserContract
+import com.guerra08.springkotlindsl.user.validation.validateUserContract
+import com.guerra08.springkotlindsl.Helpers.generateFakeUserContract
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 

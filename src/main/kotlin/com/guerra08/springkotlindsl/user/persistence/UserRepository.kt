@@ -1,6 +1,6 @@
-package com.guerra08.springkotlindsl.auth.persistence
+package com.guerra08.springkotlindsl.user.persistence
 
-import com.guerra08.springkotlindsl.auth.User
+import com.guerra08.springkotlindsl.user.User
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface UserRepository : JpaRepository<User, Long> {

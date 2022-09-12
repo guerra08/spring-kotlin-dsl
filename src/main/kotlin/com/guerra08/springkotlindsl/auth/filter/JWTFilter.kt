@@ -1,6 +1,6 @@
 package com.guerra08.springkotlindsl.auth.filter
 
-import com.guerra08.springkotlindsl.auth.persistence.UserRepository
+import com.guerra08.springkotlindsl.user.persistence.UserRepository
 import com.guerra08.springkotlindsl.auth.domain.JWTService
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken

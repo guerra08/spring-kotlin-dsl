@@ -1,4 +1,4 @@
-package com.guerra08.springkotlindsl.auth
+package com.guerra08.springkotlindsl.user
 
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority

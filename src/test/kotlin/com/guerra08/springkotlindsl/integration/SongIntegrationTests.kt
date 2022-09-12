@@ -1,6 +1,6 @@
-package com.guerra08.springkotlindsl.song.integration
+package com.guerra08.springkotlindsl.integration
 
-import com.guerra08.springkotlindsl.song.Helpers.generateFakeSongContract
+import com.guerra08.springkotlindsl.Helpers.generateFakeSongContract
 import com.guerra08.springkotlindsl.song.contract.SongContract
 import com.guerra08.springkotlindsl.song.domain.SongService
 import com.ninjasquad.springmockk.MockkBean

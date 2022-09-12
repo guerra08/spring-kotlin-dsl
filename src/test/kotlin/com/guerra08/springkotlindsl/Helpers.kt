@@ -1,6 +1,7 @@
-package com.guerra08.springkotlindsl.song
+package com.guerra08.springkotlindsl
 
-import com.guerra08.springkotlindsl.auth.contract.UserContract
+import com.guerra08.springkotlindsl.song.Song
+import com.guerra08.springkotlindsl.user.contract.UserContract
 import com.guerra08.springkotlindsl.song.contract.SongContract
 import io.github.serpro69.kfaker.Faker
 import kotlin.random.Random

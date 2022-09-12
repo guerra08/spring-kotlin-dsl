@@ -1,8 +1,9 @@
-package com.guerra08.springkotlindsl.song.domain
+package com.guerra08.springkotlindsl.unit.domain
 
-import com.guerra08.springkotlindsl.song.Helpers.generateFakeSong
-import com.guerra08.springkotlindsl.song.Helpers.generateFakeSongContract
+import com.guerra08.springkotlindsl.Helpers.generateFakeSong
+import com.guerra08.springkotlindsl.Helpers.generateFakeSongContract
 import com.guerra08.springkotlindsl.song.Song
+import com.guerra08.springkotlindsl.song.domain.SongService
 import com.guerra08.springkotlindsl.song.persistence.SongRepository
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe

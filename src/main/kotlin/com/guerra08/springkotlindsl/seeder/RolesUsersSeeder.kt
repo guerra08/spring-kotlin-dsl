@@ -1,10 +1,10 @@
-package com.guerra08.springkotlindsl.auth.seeder
+package com.guerra08.springkotlindsl.seeder
 
-import com.guerra08.springkotlindsl.auth.Role
-import com.guerra08.springkotlindsl.auth.Roles
-import com.guerra08.springkotlindsl.auth.User
-import com.guerra08.springkotlindsl.auth.persistence.RoleRepository
-import com.guerra08.springkotlindsl.auth.persistence.UserRepository
+import com.guerra08.springkotlindsl.user.Role
+import com.guerra08.springkotlindsl.user.Roles
+import com.guerra08.springkotlindsl.user.User
+import com.guerra08.springkotlindsl.user.persistence.RoleRepository
+import com.guerra08.springkotlindsl.user.persistence.UserRepository
 import org.springframework.boot.CommandLineRunner
 import org.springframework.security.crypto.password.PasswordEncoder
 

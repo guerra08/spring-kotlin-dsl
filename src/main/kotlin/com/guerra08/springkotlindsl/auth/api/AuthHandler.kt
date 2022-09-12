@@ -1,8 +1,8 @@
 package com.guerra08.springkotlindsl.auth.api
 
-import com.guerra08.springkotlindsl.auth.contract.UserContract
+import com.guerra08.springkotlindsl.user.contract.UserContract
 import com.guerra08.springkotlindsl.auth.domain.AuthService
-import com.guerra08.springkotlindsl.auth.validation.validateUserContract
+import com.guerra08.springkotlindsl.user.validation.validateUserContract
 import org.springframework.web.server.ServerWebInputException
 import org.springframework.web.servlet.function.ServerRequest
 import org.springframework.web.servlet.function.ServerResponse

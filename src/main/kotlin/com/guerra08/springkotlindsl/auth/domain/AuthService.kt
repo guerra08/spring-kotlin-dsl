@@ -1,6 +1,7 @@
 package com.guerra08.springkotlindsl.auth.domain
 
-import com.guerra08.springkotlindsl.auth.contract.UserContract
+import com.guerra08.springkotlindsl.user.contract.UserContract
+import com.guerra08.springkotlindsl.user.domain.UserService
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 

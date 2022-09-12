@@ -1,12 +1,12 @@
-package com.guerra08.springkotlindsl.auth.domain
+package com.guerra08.springkotlindsl.user.domain
 
-import com.guerra08.springkotlindsl.auth.Role
-import com.guerra08.springkotlindsl.auth.Roles
-import com.guerra08.springkotlindsl.auth.User
-import com.guerra08.springkotlindsl.auth.contract.UserContract
-import com.guerra08.springkotlindsl.auth.contract.toUser
-import com.guerra08.springkotlindsl.auth.persistence.RoleRepository
-import com.guerra08.springkotlindsl.auth.persistence.UserRepository
+import com.guerra08.springkotlindsl.user.Role
+import com.guerra08.springkotlindsl.user.Roles
+import com.guerra08.springkotlindsl.user.User
+import com.guerra08.springkotlindsl.user.contract.UserContract
+import com.guerra08.springkotlindsl.user.contract.toUser
+import com.guerra08.springkotlindsl.user.persistence.RoleRepository
+import com.guerra08.springkotlindsl.user.persistence.UserRepository
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException

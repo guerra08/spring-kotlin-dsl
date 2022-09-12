@@ -1,6 +1,6 @@
-package com.guerra08.springkotlindsl.auth.contract
+package com.guerra08.springkotlindsl.user.contract
 
-import com.guerra08.springkotlindsl.auth.User
+import com.guerra08.springkotlindsl.user.User
 
 data class UserContract(val email: String, val password: String)
 

@@ -1,6 +1,7 @@
-package com.guerra08.springkotlindsl.song.validation
+package com.guerra08.springkotlindsl.unit.validation
 
 import com.guerra08.springkotlindsl.song.contract.SongContract
+import com.guerra08.springkotlindsl.song.validation.validateSongContract
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 

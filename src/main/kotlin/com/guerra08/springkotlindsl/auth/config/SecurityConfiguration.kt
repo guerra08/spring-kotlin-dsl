@@ -1,8 +1,8 @@
 package com.guerra08.springkotlindsl.auth.config
 
-import com.guerra08.springkotlindsl.auth.Roles
+import com.guerra08.springkotlindsl.user.Roles
 import com.guerra08.springkotlindsl.auth.filter.JWTFilter
-import com.guerra08.springkotlindsl.auth.persistence.UserRepository
+import com.guerra08.springkotlindsl.user.persistence.UserRepository
 import com.guerra08.springkotlindsl.auth.domain.JWTService
 import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
