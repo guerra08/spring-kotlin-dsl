@@ -70,7 +70,7 @@ class SongIntegrationTests(
 
         every { songService.create(any()) } returns songContract
 
-        val payload = Json.encodeToString(value = songContract)
+        val payload = Json.encodeToString(songContract)
 
         client.post("/song") {
             content = payload
@@ -89,7 +89,7 @@ class SongIntegrationTests(
 
         every { songService.putById(any(), any()) } returns songContract
 
-        val payload = Json.encodeToString(value = songContract)
+        val payload = Json.encodeToString(songContract)
 
         client.put("/song/1") {
             content = payload
@@ -108,7 +108,7 @@ class SongIntegrationTests(
 
         every { songService.putById(any(), any()) } returns null
 
-        val payload = Json.encodeToString(value = songContract)
+        val payload = Json.encodeToString(songContract)
 
         client.put("/song/1") {
             content = payload

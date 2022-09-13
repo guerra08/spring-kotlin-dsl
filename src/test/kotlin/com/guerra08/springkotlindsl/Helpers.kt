@@ -34,6 +34,13 @@ object Helpers {
         )
     }
 
+    fun generateInvalidUserContract(): UserContract {
+        return UserContract(
+            email = faker.internet.domain(),
+            password = "abc"
+        )
+    }
+
 }
 
 

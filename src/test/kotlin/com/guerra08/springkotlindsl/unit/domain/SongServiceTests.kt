@@ -9,13 +9,20 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.mockk.every
 import io.mockk.mockk
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.data.repository.findByIdOrNull
 
 class SongServiceTests {
 
     private val songRepository: SongRepository = mockk()
-    private val sut: SongService = SongService(songRepository)
+
+    private lateinit var sut: SongService
+
+    @BeforeEach
+    fun setUp() {
+        sut = SongService(songRepository)
+    }
 
     @Test
     fun `given a song contract, create should return the newly created song as song contract`(){

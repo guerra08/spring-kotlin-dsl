@@ -9,6 +9,7 @@ import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.springframework.security.authentication.AuthenticationManager
@@ -21,7 +22,12 @@ class AuthServiceTests {
     private val jwtService: JWTService = mockk()
     private val userService: UserService = mockk()
 
-    private val sut = AuthService(authenticationManager, jwtService, userService)
+    private lateinit var sut: AuthService
+
+    @BeforeEach
+    fun setUp() {
+        sut = AuthService(authenticationManager, jwtService, userService)
+    }
 
     @Test
     fun `given sign up with user contract, should create user and return jwt token`() {
