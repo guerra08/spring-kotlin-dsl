@@ -76,10 +76,8 @@ class AuthServiceTests {
         every { authenticationManager.authenticate(any()) } throws BadCredentialsException("Invalid credentials")
 
         assertThrows<BadCredentialsException> {
-            sut.signIn(userContract
-            )
+            sut.signIn(userContract)
         }
     }
-    //TODO: Create tests for UserService and JWTService
 
 }
